@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     public static final String EXTRA_MESSAGE = "de.hottenstein.krimirundgang.MESSAGE";
 
     protected GoogleApiClient mGoogleApiClient;
-    private enum MY_PERMISSIONS_REQUEST_LOCATION{RETURN_CODE};
+    private enum requestCode{MY_PERMISSIONS_REQUEST_LOCATION};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
