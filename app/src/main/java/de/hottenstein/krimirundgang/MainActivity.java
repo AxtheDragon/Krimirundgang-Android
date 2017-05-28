@@ -63,9 +63,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
     @Override
     public void onConnected(@Nullable Bundle connectionHint) {
-        TextView mLatitudeText = (TextView) findViewById(R.id.LatitudeText);
-        TextView mLongitudeText = (TextView) findViewById(R.id.LongitudeText);
-
         if (!isAllowedToAccessLocation(android.Manifest.permission.ACCESS_FINE_LOCATION)
             && !isAllowedToAccessLocation(Manifest.permission.ACCESS_COARSE_LOCATION)) {
             // TODO: Consider calling
@@ -77,6 +74,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
+        TextView mLatitudeText = (TextView) findViewById(R.id.LatitudeText);
+        TextView mLongitudeText = (TextView) findViewById(R.id.LongitudeText);
         Location mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                 mGoogleApiClient);
         if (mLastLocation != null) {
