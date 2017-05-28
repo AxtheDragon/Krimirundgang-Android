@@ -76,8 +76,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     }
 
     protected void onResume() {
-        public LocationRequest mLocationRequest;
-        createLocationRequest();
+        LocationRequest mLocationRequest = createLocationRequest();
         LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder().addLocationRequest(mLocationRequest);
         super.onResume();
     }
