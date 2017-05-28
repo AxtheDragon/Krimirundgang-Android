@@ -29,11 +29,12 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     protected GoogleApiClient mGoogleApiClient;
     private static final int MY_PERMISSIONS_REQUEST_LOCATION = 0;
 
-    protected void createLocationRequest() {
+    protected LocationRequest createLocationRequest() {
         LocationRequest mLocationRequest = new LocationRequest();
         mLocationRequest.setInterval(2000);
         mLocationRequest.setFastestInterval(1000);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        return mLocationRequest;
     }
 
     @Override
@@ -75,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     }
 
     protected void onResume() {
+        public LocationRequest mLocationRequest;
         createLocationRequest();
         LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder().addLocationRequest(mLocationRequest);
         super.onResume();
