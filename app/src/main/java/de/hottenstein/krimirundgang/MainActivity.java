@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     public static final String EXTRA_MESSAGE = "de.hottenstein.krimirundgang.MESSAGE";
 
     protected GoogleApiClient mGoogleApiClient;
+    private int MY_PERMISSIONS_REQUEST_LOCATION;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
     @Override
     public void onConnected(@Nullable Bundle connectionHint) {
+
         if (!isAllowedToAccessLocation(android.Manifest.permission.ACCESS_FINE_LOCATION)
             && !isAllowedToAccessLocation(Manifest.permission.ACCESS_COARSE_LOCATION)) {
             // TODO: Consider calling
@@ -72,6 +74,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
+
+
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
                     MY_PERMISSIONS_REQUEST_LOCATION);
