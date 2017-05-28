@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
                     MY_PERMISSIONS_REQUEST_LOCATION);
 
-            return;
         }
 
         if (mGoogleApiClient == null) {
