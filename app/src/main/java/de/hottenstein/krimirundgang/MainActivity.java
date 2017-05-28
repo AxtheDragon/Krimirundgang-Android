@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         startActivity(intent);
 
     }
-    //Dies ist ein nutzloser kommentar
+
     @Override
     public void onConnected(@Nullable Bundle connectionHint) {
         TextView mLatitudeText = (TextView) findViewById(R.id.LatitudeText);
