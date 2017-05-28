@@ -33,6 +33,24 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         setContentView(R.layout.activity_main);
         // Create an instance of GoogleAPIClient for location services
 
+        if (!isAllowedToAccessLocation(android.Manifest.permission.ACCESS_FINE_LOCATION)
+                && !isAllowedToAccessLocation(Manifest.permission.ACCESS_COARSE_LOCATION)) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+
+
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
+                    MY_PERMISSIONS_REQUEST_LOCATION);
+
+            return;
+        }
+
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(this)
                     .addConnectionCallbacks(this)
@@ -65,23 +83,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     @Override
     public void onConnected(@Nullable Bundle connectionHint) {
 
-        if (!isAllowedToAccessLocation(android.Manifest.permission.ACCESS_FINE_LOCATION)
-            && !isAllowedToAccessLocation(Manifest.permission.ACCESS_COARSE_LOCATION)) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-
-
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
-                    MY_PERMISSIONS_REQUEST_LOCATION);
-
-            return;
-        }
         TextView mLatitudeText = (TextView) findViewById(R.id.LatitudeText);
         TextView mLongitudeText = (TextView) findViewById(R.id.LongitudeText);
         Location mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
