@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // Create an instance of GoogleAPIClient for location services
 
         if (!isAllowedToAccessLocation(android.Manifest.permission.ACCESS_FINE_LOCATION)
                 && !isAllowedToAccessLocation(Manifest.permission.ACCESS_COARSE_LOCATION)) {
@@ -60,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
         }
 
+        // Create an instance of GoogleAPIClient for location services
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(this)
                     .addConnectionCallbacks(this)
