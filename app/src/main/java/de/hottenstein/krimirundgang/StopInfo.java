@@ -23,6 +23,10 @@ public class StopInfo implements Parcelable {
         location = (Location) in.readValue(Location.class.getClassLoader());
     }
 
+    protected StopInfo() {
+
+    }
+
     @Override
     public int describeContents() {
         return 0;
