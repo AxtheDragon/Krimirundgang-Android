@@ -1,5 +1,6 @@
 package de.hottenstein.krimirundgang;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 import android.location.Location;
+import android.view.View;
 
 public class TourDetailActivity extends AppCompatActivity {
 
@@ -41,5 +43,10 @@ public class TourDetailActivity extends AppCompatActivity {
             result.add(si);
         }
         return result;
+    }
+
+    public void selectStop(View view) {
+        Intent intent = new Intent(this, StopDetailActivity.class);
+        startActivity(intent);
     }
 }
