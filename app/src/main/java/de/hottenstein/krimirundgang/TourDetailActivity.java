@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TourDetailActivity extends AppCompatActivity {
 
     @Override
@@ -17,5 +20,18 @@ public class TourDetailActivity extends AppCompatActivity {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
     }
-}
 
+    private List<StopInfo> createList(int size) {
+
+        List<StopInfo> result = new ArrayList<StopInfo>();
+        for (int i=1; i <= size; i++){
+            StopInfo si = new StopInfo();
+            si.title = StopInfo.TITLE_PREFIX + i;
+            si.description = StopInfo.DESCRIPTION_PREFIX + i;
+            si.location = null;
+
+            result.add(si);
+        }
+        return result;
+    }
+}
