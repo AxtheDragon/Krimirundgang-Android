@@ -1,6 +1,7 @@
 package de.hottenstein.krimirundgang;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -9,6 +10,8 @@ import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,6 +81,11 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
         }
+    }
+
+    public void enterTourOverview(View view) {
+        Intent intent = new Intent(this, TourDetailActivity.class);
+        startActivity(intent);
     }
 
     @Override
