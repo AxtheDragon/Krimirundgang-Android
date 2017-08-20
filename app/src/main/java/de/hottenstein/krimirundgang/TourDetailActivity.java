@@ -20,18 +20,18 @@ public class TourDetailActivity extends AppCompatActivity {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
     }
-}
 
-private List<StopInfo> createList(int size) {
+    private List<StopInfo> createList(int size) {
 
-    List<StopInfo> result = new ArrayList<StopInfo>();
-    for (int i=1; i <= size; i++){
-        StopInfo si = new StopInfo();
-        si.title = StopInfo.TITLE_PREFIX + i;
-        si.description = StopInfo.DESCRIPTION_PREFIX + i;
-        si.location = null;
+        List<StopInfo> result = new ArrayList<StopInfo>();
+        for (int i=1; i <= size; i++){
+            StopInfo si = new StopInfo();
+            si.title = StopInfo.TITLE_PREFIX + i;
+            si.description = StopInfo.DESCRIPTION_PREFIX + i;
+            si.location = null;
 
-        result.add(si);
+            result.add(si);
+        }
+        return result;
     }
-    return result;
 }
