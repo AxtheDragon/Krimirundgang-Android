@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void enterTourCycling(View view) {
+    public void enterTourOverview(View view) {
         Intent intent = new Intent(this, TourDetailActivity.class);
         startActivity(intent);
     }
