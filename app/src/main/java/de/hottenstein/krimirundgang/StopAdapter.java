@@ -1,6 +1,6 @@
 package de.hottenstein.krimirundgang;
 
-import android.support.v7.app.AlertController;
+
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.List;
-import java.util.concurrent.RecursiveAction;
 
 /**
  * Created by Andi on 20.08.2017.
@@ -47,7 +46,7 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.StopViewHolder
         protected TextView vDescription;
 
         public StopViewHolder(View v){
-            super v;
+            super(v);
             vTitle = (TextView) v.findViewById(R.id.stopTitle);
             vDescription = (TextView) v.findViewById(R.id.stopDescription);
         }
