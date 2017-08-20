@@ -19,6 +19,9 @@ public class TourDetailActivity extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
+
+        StopAdapter sa = new StopAdapter(createList(10));
+        recyclerView.setAdapter(sa);
     }
 
     private List<StopInfo> createList(int size) {
