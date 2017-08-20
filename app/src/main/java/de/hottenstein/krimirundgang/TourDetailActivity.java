@@ -18,3 +18,4 @@ public class TourDetailActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(llm);
     }
 }
+
