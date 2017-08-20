@@ -14,18 +14,19 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="8dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#ffffff"
-                android:text="Caption"
-                android:id="@+id/textView1"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="4dp" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/stopTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="4dp"
+                android:text="Caption"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/stopDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
