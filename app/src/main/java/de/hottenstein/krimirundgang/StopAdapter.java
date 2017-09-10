@@ -67,8 +67,4 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.StopViewHolder
 
         }
     }
-
-    public void onItemClick() {
-       /*TODO: add click event here instead of "selectStop" method*/
-       }
 }
