@@ -65,7 +65,6 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.StopViewHolder
             vTitle = (TextView) v.findViewById(R.id.stopTitle);
             vDescription = (TextView) v.findViewById(R.id.stopDescription);
             vCard = (CardView) v.findViewById(R.id.stopView);
-
         }
     }
 }

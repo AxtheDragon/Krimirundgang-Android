@@ -23,8 +23,6 @@ public class StopInfo implements Parcelable {
                                                     + " et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
                                                     + " Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.";
 
-
-
     protected StopInfo(Parcel in) {
         title = in.readString();
         description = in.readString();
@@ -32,9 +30,7 @@ public class StopInfo implements Parcelable {
         content = in.readString();
     }
 
-    protected StopInfo() {
-
-    }
+    protected StopInfo(){}
 
     @Override
     public int describeContents() {
