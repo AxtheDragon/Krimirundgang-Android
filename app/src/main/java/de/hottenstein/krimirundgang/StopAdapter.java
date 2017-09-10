@@ -18,9 +18,11 @@ import java.util.List;
 
 public class StopAdapter extends RecyclerView.Adapter<StopAdapter.StopViewHolder> {
     private List<StopInfo> stopList;
+    private TourDetailActivity tourDetailActivity;
 
-    public StopAdapter(List<StopInfo> stopList) {
+    public StopAdapter(List<StopInfo> stopList, TourDetailActivity tourDetailActivity) {
         this.stopList = stopList;
+        this.tourDetailActivity = tourDetailActivity;
     }
 
     @Override
@@ -33,6 +35,13 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.StopViewHolder
         StopInfo si = stopList.get(i);
         stopViewHolder.vTitle.setText(si.title);
         stopViewHolder.vDescription.setText(si.description);
+        stopViewHolder.vTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(tourDetailActivity, StopDetailActivity.class);
+                tourDetailActivity.startActivity(intent);
+            }
+        });
     }
 
     @Override

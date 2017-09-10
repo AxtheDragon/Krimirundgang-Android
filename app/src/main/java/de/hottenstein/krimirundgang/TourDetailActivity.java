@@ -25,7 +25,7 @@ public class TourDetailActivity extends AppCompatActivity {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
 
-        StopAdapter sa = new StopAdapter(createList(10));
+        StopAdapter sa = new StopAdapter(createList(10), this);
         recyclerView.setAdapter(sa);
     }
 
@@ -43,10 +43,5 @@ public class TourDetailActivity extends AppCompatActivity {
             result.add(si);
         }
         return result;
-    }
-
-    public void selectStop(View view) {
-        Intent intent = new Intent(this, StopDetailActivity.class);
-        startActivity(intent);
     }
 }
