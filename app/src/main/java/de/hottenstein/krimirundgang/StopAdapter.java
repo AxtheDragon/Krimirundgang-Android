@@ -33,13 +33,14 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.StopViewHolder
 
     @Override
     public void onBindViewHolder(StopViewHolder stopViewHolder, int i){
-        StopInfo si = stopList.get(i);
+        final StopInfo si = stopList.get(i);
         stopViewHolder.vTitle.setText(si.title);
         stopViewHolder.vDescription.setText(si.description);
         stopViewHolder.vCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tourDetailActivity, StopDetailActivity.class);
+                intent.putExtra("stopInfo", si);
                 tourDetailActivity.startActivity(intent);
             }
         });
