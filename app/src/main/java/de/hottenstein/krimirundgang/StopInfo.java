@@ -24,6 +24,7 @@ public class StopInfo implements Parcelable {
                                                     + " Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.";
 
     protected StopInfo(Parcel in) {
+        // We need to make sure that the assignment order equals the write order of writeToParcel
         title = in.readString();
         description = in.readString();
         location = (Location) in.readValue(Location.class.getClassLoader());
@@ -39,6 +40,7 @@ public class StopInfo implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        // We need to make sure that the write order equals the assignment order of the constructor
         dest.writeString(title);
         dest.writeString(description);
         dest.writeValue(location);
