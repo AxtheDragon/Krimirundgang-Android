@@ -1,5 +1,6 @@
 package de.hottenstein.krimirundgang;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,8 +8,12 @@ import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.location.Location;
+import android.view.View;
 
 public class TourDetailActivity extends AppCompatActivity {
+
+    private String sLocationName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +25,7 @@ public class TourDetailActivity extends AppCompatActivity {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
 
-        StopAdapter sa = new StopAdapter(createList(10));
+        StopAdapter sa = new StopAdapter(createList(10), this);
         recyclerView.setAdapter(sa);
     }
 
@@ -31,7 +36,10 @@ public class TourDetailActivity extends AppCompatActivity {
             StopInfo si = new StopInfo();
             si.title = StopInfo.TITLE_PREFIX + i;
             si.description = StopInfo.DESCRIPTION_PREFIX + i;
-            si.location = null;
+            si.location = new Location(sLocationName);
+            si.location.setLatitude(52.0000);
+            si.location.setLongitude(9.0000);
+            si.content = i + StopInfo.CONTENT_DUMMY;
 
             result.add(si);
         }

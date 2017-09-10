@@ -19,8 +19,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TourDetailActivity"
-                  android:parentActivityName=".MainActivity">
+        <activity
+            android:name=".TourDetailActivity"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".StopDetailActivity"
+            android:label="@string/title_activity_stop_detail"
+            android:parentActivityName=".TourDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.hottenstein.krimirundgang.TourDetailActivity" />
         </activity>
     </application>
 

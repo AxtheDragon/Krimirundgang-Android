@@ -4,4 +4,6 @@
     <string name="button_send">Send</string>
     <string name="settingsChangeUnavailable">Location settings are inadequate, and cannot be fixed here. Fix in Settings.</string>
     <string name="tourTitle">Bad Salzdetfurth</string>
+    <string name="title_activity_stop_detail">StopDetailActivity</string>
+    <string name="action_settings">Settings</string>
 </resources>
