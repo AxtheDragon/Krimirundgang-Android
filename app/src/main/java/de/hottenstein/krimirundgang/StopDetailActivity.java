@@ -15,14 +15,19 @@ public class StopDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StopInfo stopInfo = getIntent().getParcelableExtra("stopInfo");
         setContentView(R.layout.activity_stop_detail);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);             
+
+        StopInfo stopInfo = getIntent().getParcelableExtra("stopInfo");
+        
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         CollapsingToolbarLayout layout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
         layout.setTitle(stopInfo.title);
+
         TextView mStopContentView = (TextView) findViewById(R.id.stopContentText);
         mStopContentView.setText(stopInfo.content);
-        setSupportActionBar(toolbar);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,6 +36,7 @@ public class StopDetailActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }
