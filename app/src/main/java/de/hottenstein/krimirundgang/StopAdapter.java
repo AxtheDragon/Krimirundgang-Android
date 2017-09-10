@@ -2,6 +2,7 @@ package de.hottenstein.krimirundgang;
 
 
 import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,7 +36,7 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.StopViewHolder
         StopInfo si = stopList.get(i);
         stopViewHolder.vTitle.setText(si.title);
         stopViewHolder.vDescription.setText(si.description);
-        stopViewHolder.vTitle.setOnClickListener(new View.OnClickListener() {
+        stopViewHolder.vCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tourDetailActivity, StopDetailActivity.class);
@@ -56,11 +57,13 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.StopViewHolder
     public static class StopViewHolder extends RecyclerView.ViewHolder {
         protected TextView vTitle;
         protected TextView vDescription;
+        protected CardView vCard;
 
         public StopViewHolder(View v){
             super(v);
             vTitle = (TextView) v.findViewById(R.id.stopTitle);
             vDescription = (TextView) v.findViewById(R.id.stopDescription);
+            vCard = (CardView) v.findViewById(R.id.stopView);
 
         }
     }
