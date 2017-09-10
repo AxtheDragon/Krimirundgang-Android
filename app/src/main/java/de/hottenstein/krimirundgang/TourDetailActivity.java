@@ -39,6 +39,7 @@ public class TourDetailActivity extends AppCompatActivity {
             si.location = new Location(sLocationName);
             si.location.setLatitude(52.0000);
             si.location.setLongitude(9.0000);
+            si.content = i + StopInfo.CONTENT_DUMMY;
 
             result.add(si);
         }
