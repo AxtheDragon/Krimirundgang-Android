@@ -25,6 +25,7 @@ public class StopInfo implements Parcelable {
 
     protected StopInfo(Parcel in) {
         // We need to make sure that the assignment order equals the write order of writeToParcel
+        //That can be tested with "StopInfo Test"
         title = in.readString();
         description = in.readString();
         location = (Location) in.readValue(Location.class.getClassLoader());
@@ -45,6 +46,7 @@ public class StopInfo implements Parcelable {
         dest.writeString(description);
         dest.writeValue(location);
         dest.writeString(content);
+
     }
 
     @SuppressWarnings("unused")
