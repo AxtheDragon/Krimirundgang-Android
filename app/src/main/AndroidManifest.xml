@@ -14,7 +14,8 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCZBTj9EQmFnM7lSh5W3U6rkMoq2VIWa-s"/>
+            android:value="AIzaSyCZBTj9EQmFnM7lSh5W3U6rkMoq2VIWa-s" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +25,7 @@
         </activity>
         <activity
             android:name=".TourDetailActivity"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".StopDetailActivity"
             android:label="@string/title_activity_stop_detail"
@@ -33,6 +34,13 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.hottenstein.krimirundgang.TourDetailActivity" />
+        </activity>
+        <activity
+            android:name=".TourMapActivity"
+            android:label="@string/title_activity_tour_map">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.hottenstein.krimirundgang.MainActivity" />
         </activity>
     </application>
 
