@@ -51,4 +51,15 @@ public class StopInfoTest {
         inOrder.verify(mockParcel).writeString(content);
     }
 
+    @Test
+    public void constructorAssignmentOrder() throws Exception {
+        Parcel mockParcel = mock(Parcel.class);
+        InOrder inOrder = inOrder(mockParcel);
+
+        StopInfo unusedInfo = new StopInfo(mockParcel);
+
+        inOrder.verify(mockParcel, times(2)).readString();
+        inOrder.verify(mockParcel).readValue(Location.class.getClassLoader());
+        inOrder.verify(mockParcel).readString();
+    }
 }
