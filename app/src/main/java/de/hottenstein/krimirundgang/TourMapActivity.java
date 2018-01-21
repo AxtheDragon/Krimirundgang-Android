@@ -74,6 +74,12 @@ public class TourMapActivity extends FragmentActivity implements OnMapReadyCallb
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+        // Add a marker at the location of the first stop
+        LatLng firstStop = new LatLng(Stopliste.get(0).location.getLatitude(),Stopliste.get(0).location.getLongitude());
+        mMap.addMarker(new MarkerOptions().position(firstStop).title(Stopliste.get(0).title));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(firstStop));
+
     }
 }
