@@ -23,9 +23,6 @@ public class TourMapActivity extends FragmentActivity implements OnMapReadyCallb
 
     private GoogleMap mMap;
     private String sLocationName;
-    private float randMin = -10;
-    private float randMax = +10;
-    private Random rand = new Random();
     private List<StopInfo> stoplist;
 
     @Override
@@ -38,11 +35,12 @@ public class TourMapActivity extends FragmentActivity implements OnMapReadyCallb
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-
     }
 
     private List<StopInfo> createList(int size) {
+        float randMin = -10;
+        float randMax = +10;
+        Random rand = new Random();
 
         List<StopInfo> result = new ArrayList<StopInfo>();
         for (int i = 1; i <= size; i++) {
@@ -65,8 +63,6 @@ public class TourMapActivity extends FragmentActivity implements OnMapReadyCallb
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
      * If Google Play services is not installed on the device, the user will be prompted to install
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
@@ -75,34 +71,31 @@ public class TourMapActivity extends FragmentActivity implements OnMapReadyCallb
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
+        StopInfo currentStop;
 
         // Add a marker at the location of the first stop
         for (int i = 0; i < stoplist.size(); i++) {
-            double lat = stoplist.get(i).location.getLatitude();
-            double lng = stoplist.get(i).location.getLongitude();
+            currentStop = stoplist.get(i);
+            double lat = currentStop.location.getLatitude();
+            double lng = currentStop.location.getLongitude();
             LatLng stop = new LatLng(lat, lng);
             Marker marker =  mMap.addMarker(new MarkerOptions()
                     .position(stop)
-                    .title(stoplist.get(i).title)
-                    .snippet(stoplist.get(i).description)
+                    .title(currentStop.title)
+                    .snippet(currentStop.description)
             );
-            StopInfo siTag = stoplist.get(i);
-            marker.setTag(siTag);
+            marker.setTag(currentStop);
             builder.include(stop);
         }
         mMap.setOnInfoWindowClickListener(this);
         mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), 50));
-
     }
 
    @Override
     public void onInfoWindowClick(Marker marker) {
-        Toast.makeText(this, "Info window clicked",
-                Toast.LENGTH_SHORT).show();
        Intent intent = new Intent(this, StopDetailActivity.class);
        StopInfo si = (StopInfo) marker.getTag();
        intent.putExtra("stopInfo", si);
        startActivity(intent);
-
     }
 }
