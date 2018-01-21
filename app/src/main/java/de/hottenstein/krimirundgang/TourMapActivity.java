@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.location.Location;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -23,13 +22,13 @@ public class TourMapActivity extends FragmentActivity implements OnMapReadyCallb
 
     private GoogleMap mMap;
     private String sLocationName;
-    private List<StopInfo> stoplist;
+    private List<StopInfo> stopList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tour_map);
-        stoplist = createList(10);
+        stopList = createList(10);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -74,8 +73,8 @@ public class TourMapActivity extends FragmentActivity implements OnMapReadyCallb
         StopInfo currentStop;
 
         // Add a marker at the location of the first stop
-        for (int i = 0; i < stoplist.size(); i++) {
-            currentStop = stoplist.get(i);
+        for (int i = 0; i < stopList.size(); i++) {
+            currentStop = stopList.get(i);
             double lat = currentStop.location.getLatitude();
             double lng = currentStop.location.getLongitude();
             LatLng stop = new LatLng(lat, lng);
