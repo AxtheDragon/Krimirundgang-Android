@@ -3,6 +3,7 @@ package de.hottenstein.krimirundgang;
 import android.location.Location;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -10,13 +11,14 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class TourMapActivity extends FragmentActivity implements OnMapReadyCallback {
+public class TourMapActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
 
     private GoogleMap mMap;
     private String sLocationName;
@@ -42,7 +44,7 @@ public class TourMapActivity extends FragmentActivity implements OnMapReadyCallb
     private List<StopInfo> createList(int size) {
 
         List<StopInfo> result = new ArrayList<StopInfo>();
-        for (int i=1; i <= size; i++){
+        for (int i = 1; i <= size; i++) {
             float latOffset = rand.nextFloat() * (randMin - randMax) + randMin;
             float lngOffset = rand.nextFloat() * (randMin - randMax) + randMin;
             StopInfo si = new StopInfo();
@@ -84,8 +86,15 @@ public class TourMapActivity extends FragmentActivity implements OnMapReadyCallb
                     .snippet(stoplist.get(i).description));
             builder.include(stop);
         }
-
+        mMap.setOnInfoWindowClickListener(this);
         mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), 50));
+
+    }
+
+   @Override
+    public void onInfoWindowClick(Marker marker) {
+        Toast.makeText(this, "Info window clicked",
+                Toast.LENGTH_SHORT).show();
 
     }
 }
