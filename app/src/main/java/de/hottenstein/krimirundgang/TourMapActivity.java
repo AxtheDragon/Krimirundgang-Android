@@ -13,12 +13,16 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class TourMapActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private String sLocationName;
     private List<StopInfo> Stopliste;
+    private float randMin = -10;
+    private float randMax = +10;
+    private Random rand = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +42,14 @@ public class TourMapActivity extends FragmentActivity implements OnMapReadyCallb
 
         List<StopInfo> result = new ArrayList<StopInfo>();
         for (int i=1; i <= size; i++){
+            float latOffset = rand.nextFloat() * (randMin - randMax) + randMin;
+            float lngOffset = rand.nextFloat() * (randMin - randMax) + randMin;
             StopInfo si = new StopInfo();
             si.title = StopInfo.TITLE_PREFIX + i;
             si.description = StopInfo.DESCRIPTION_PREFIX + i;
             si.location = new Location(sLocationName);
-            si.location.setLatitude(52.0000);
-            si.location.setLongitude(9.0000);
+            si.location.setLatitude(52.0000 + latOffset);
+            si.location.setLongitude(9.0000 + lngOffset);
             si.content = i + StopInfo.CONTENT_DUMMY;
 
             result.add(si);
