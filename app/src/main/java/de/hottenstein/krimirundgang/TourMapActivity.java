@@ -19,16 +19,16 @@ public class TourMapActivity extends FragmentActivity implements OnMapReadyCallb
 
     private GoogleMap mMap;
     private String sLocationName;
-    private List<StopInfo> Stopliste;
     private float randMin = -10;
     private float randMax = +10;
     private Random rand = new Random();
+    private List<StopInfo> stoplist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tour_map);
-        Stopliste = createList(10);
+        stoplist = createList(10);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -74,12 +74,15 @@ public class TourMapActivity extends FragmentActivity implements OnMapReadyCallb
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
         // Add a marker at the location of the first stop
-        LatLng firstStop = new LatLng(Stopliste.get(0).location.getLatitude(),Stopliste.get(0).location.getLongitude());
-        mMap.addMarker(new MarkerOptions().position(firstStop).title(Stopliste.get(0).title));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(firstStop));
+        for (int i = 0; i < stoplist.size(); i++) {
+            double lat = stoplist.get(i).location.getLatitude();
+            double lng = stoplist.get(i).location.getLongitude();
+            LatLng stop = new LatLng(lat, lng);
+            mMap.addMarker(new MarkerOptions().position(stop).title(stoplist.get(i).title));
+        }
 
     }
 }
