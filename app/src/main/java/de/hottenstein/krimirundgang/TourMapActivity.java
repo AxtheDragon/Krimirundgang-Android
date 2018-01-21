@@ -1,5 +1,6 @@
 package de.hottenstein.krimirundgang;
 
+import android.content.Intent;
 import android.location.Location;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -80,10 +81,13 @@ public class TourMapActivity extends FragmentActivity implements OnMapReadyCallb
             double lat = stoplist.get(i).location.getLatitude();
             double lng = stoplist.get(i).location.getLongitude();
             LatLng stop = new LatLng(lat, lng);
-            mMap.addMarker(new MarkerOptions()
+            Marker marker =  mMap.addMarker(new MarkerOptions()
                     .position(stop)
                     .title(stoplist.get(i).title)
-                    .snippet(stoplist.get(i).description));
+                    .snippet(stoplist.get(i).description)
+            );
+            StopInfo siTag = stoplist.get(i);
+            marker.setTag(siTag);
             builder.include(stop);
         }
         mMap.setOnInfoWindowClickListener(this);
@@ -95,6 +99,10 @@ public class TourMapActivity extends FragmentActivity implements OnMapReadyCallb
     public void onInfoWindowClick(Marker marker) {
         Toast.makeText(this, "Info window clicked",
                 Toast.LENGTH_SHORT).show();
+       Intent intent = new Intent(this, StopDetailActivity.class);
+       StopInfo si = (StopInfo) marker.getTag();
+       intent.putExtra("stopInfo", si);
+       startActivity(intent);
 
     }
 }
