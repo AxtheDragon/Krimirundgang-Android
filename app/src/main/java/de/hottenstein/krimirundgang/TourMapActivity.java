@@ -81,7 +81,10 @@ public class TourMapActivity extends FragmentActivity implements OnMapReadyCallb
             double lat = stoplist.get(i).location.getLatitude();
             double lng = stoplist.get(i).location.getLongitude();
             LatLng stop = new LatLng(lat, lng);
-            mMap.addMarker(new MarkerOptions().position(stop).title(stoplist.get(i).title));
+            mMap.addMarker(new MarkerOptions()
+                    .position(stop)
+                    .title(stoplist.get(i).title)
+                    .snippet(stoplist.get(i).description));
         }
 
     }
