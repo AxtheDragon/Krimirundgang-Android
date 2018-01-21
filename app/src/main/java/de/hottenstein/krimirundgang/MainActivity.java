@@ -88,6 +88,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void enterTourMap(View view) {
+        Intent intent = new Intent(this, TourMapActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
