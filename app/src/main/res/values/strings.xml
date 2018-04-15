@@ -3,7 +3,7 @@
     <string name="edit_message">Enter a message</string>
     <string name="button_send">Send</string>
     <string name="settingsChangeUnavailable">Location settings are inadequate, and cannot be fixed here. Fix in Settings.</string>
-    <string name="tourTitle">Bad Salzdetfurth</string>
+    <string name="title">Bad Salzdetfurth</string>
     <string name="title_activity_stop_detail">StopDetailActivity</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_tour_map">Tour</string>
