@@ -13,6 +13,8 @@ import android.view.View;
 
 public class TourDetailActivity extends AppCompatActivity {
 
+    protected TourInfo MyTour = new TourInfo();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +25,7 @@ public class TourDetailActivity extends AppCompatActivity {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
 
-        StopAdapter sa = new StopAdapter(createList(10), this);
+        StopAdapter sa = new StopAdapter(MyTour.stopList, this);
         recyclerView.setAdapter(sa);
     }
 
