@@ -1,0 +1,16 @@
+{
+  "TourName": "foo",
+  "Stops": [
+    {
+      "Title": "foo title",
+      "Description": "foo description",
+      "Location":
+        {
+           "Latitude": 13.37
+           "Longitude": 31.337
+        },
+      "Content": "foo long text",
+      "Order": 0
+    }
+  ]
+}
