@@ -13,8 +13,6 @@ import android.view.View;
 
 public class TourDetailActivity extends AppCompatActivity {
 
-    private static String sLocationName;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +34,7 @@ public class TourDetailActivity extends AppCompatActivity {
             StopInfo si = new StopInfo();
             si.title = StopInfo.TITLE_PREFIX + i;
             si.description = StopInfo.DESCRIPTION_PREFIX + i;
-            si.location = new Location(sLocationName);
+            si.location = new Location("");
             si.location.setLatitude(52.0000);
             si.location.setLongitude(9.0000);
             si.content = i + StopInfo.CONTENT_DUMMY;
