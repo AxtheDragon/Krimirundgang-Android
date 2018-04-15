@@ -13,7 +13,7 @@ import android.view.View;
 
 public class TourDetailActivity extends AppCompatActivity {
 
-    private String sLocationName;
+    private static String sLocationName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class TourDetailActivity extends AppCompatActivity {
         recyclerView.setAdapter(sa);
     }
 
-    private List<StopInfo> createList(int size) {
+    public static List<StopInfo> createList(int size) {
 
         List<StopInfo> result = new ArrayList<StopInfo>();
         for (int i=1; i <= size; i++){
