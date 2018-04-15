@@ -1,13 +1,19 @@
 package de.hottenstein.krimirundgang;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TourInfo {
-    protected String TourTitle;
+    protected String title;
     protected List<StopInfo> stopList;
 
+    protected TourInfo(String title, List<StopInfo> stopList){
+        this.title = title;
+        this.stopList = stopList;
+    }
+
     protected TourInfo(){
-        this.TourTitle = "MyFirstTour";
-        this.stopList = TourDetailActivity.createList(10);
+        this.title = "";
+        this.stopList = new ArrayList<>();
     }
 }

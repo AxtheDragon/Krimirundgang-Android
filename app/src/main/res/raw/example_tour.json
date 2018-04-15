@@ -1,5 +1,5 @@
 {
-  "TourName": "foo",
+  "Name": "foo",
   "Stops": [
     {
       "Title": "foo title",
