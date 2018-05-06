@@ -1,10 +1,15 @@
 package de.hottenstein.krimirundgang;
 
-import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,12 +18,6 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
-import android.location.Location;
-import android.view.View;
-import android.widget.TextView;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class TourDetailActivity extends AppCompatActivity {
 
@@ -73,7 +72,9 @@ public class TourDetailActivity extends AppCompatActivity {
             String jsonString = sb.toString();
 
             JSONObject jsonTour = new JSONObject(jsonString);
-            return new TourInfo(jsonTour.getString("Name"), new ArrayList<StopInfo>());
+            String name = jsonTour.getString("Name");
+            JSONArray stops = jsonTour.getJSONArray("Stops");
+            return new TourInfo(name, readStops(stops));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -90,5 +91,28 @@ public class TourDetailActivity extends AppCompatActivity {
             }
         }
         return null;
+    }
+
+    private List<StopInfo> readStops(JSONArray wrappedStops) {
+        List<StopInfo> stopList = new ArrayList<>();
+        JSONObject currentStop;
+        for (int i = 0; i < wrappedStops.length(); i++) {
+            try {
+                currentStop = wrappedStops.getJSONObject(i);
+                StopInfo newStop = new StopInfo();
+                newStop.title = currentStop.getString("Title");
+                newStop.description = currentStop.getString("Description");
+                JSONObject jsonLocation = currentStop.getJSONObject("Location");
+                newStop.location = new Location("JSON");
+                newStop.location.setLatitude(jsonLocation.getDouble("Latitude"));
+                newStop.location.setLongitude(jsonLocation.getDouble("Longitude"));
+                newStop.content = currentStop.getString("Content");
+                newStop.order = currentStop.getInt("Order");
+                stopList.add(newStop);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return stopList;
     }
 }
