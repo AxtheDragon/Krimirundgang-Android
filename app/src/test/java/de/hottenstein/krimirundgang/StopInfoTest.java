@@ -26,17 +26,19 @@ public class StopInfoTest {
         description = "Test description";
         location = new Location("Test location");
         content = "Test content";
+        order = 0;
 
         stopInfo = new StopInfo();
         stopInfo.title = title;
         stopInfo.description = description;
         stopInfo.location = location;
         stopInfo.content = content;
+        stopInfo.order = order;
     }
 
     /**
      * This test makes sure that the StopInfo is written to and read from the parcel in the correct
-     * order, when we send it to an other activity via an intent.
+     * order, when we send it to another activity via an intent.
      */
     @Test
     public void writeToParcelOrder() throws Exception {
@@ -49,6 +51,7 @@ public class StopInfoTest {
         inOrder.verify(mockParcel).writeString(description);
         inOrder.verify(mockParcel).writeValue(location);
         inOrder.verify(mockParcel).writeString(content);
+        inOrder.verify(mockParcel).writeInt(content);
     }
 
     @Test
@@ -61,5 +64,6 @@ public class StopInfoTest {
         inOrder.verify(mockParcel, times(2)).readString();
         inOrder.verify(mockParcel).readValue(Location.class.getClassLoader());
         inOrder.verify(mockParcel).readString();
+        inOrder.verify(mockParcel).readInt();
     }
 }
