@@ -51,7 +51,7 @@ public class StopInfoTest {
         inOrder.verify(mockParcel).writeString(description);
         inOrder.verify(mockParcel).writeValue(location);
         inOrder.verify(mockParcel).writeString(content);
-        inOrder.verify(mockParcel).writeInt(content);
+        inOrder.verify(mockParcel).writeInt(order);
     }
 
     @Test
