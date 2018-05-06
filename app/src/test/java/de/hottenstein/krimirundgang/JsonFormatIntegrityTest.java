@@ -1,10 +1,13 @@
 package de.hottenstein.krimirundgang;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
 
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
 
+@RunWith(RobolectricTestRunner.class)
 public class JsonFormatIntegrityTest {
 
        private String passingJson ="{\n" +
