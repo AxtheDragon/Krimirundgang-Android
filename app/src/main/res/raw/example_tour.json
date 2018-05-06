@@ -23,16 +23,5 @@
       "Content": "foo long text2",
       "Order": 1
     }
-    {
-      "Title": "foo title 2",
-      "Description": "foo description 2",
-      "Location":
-      {
-        "Latitude": 13.47,
-        "Longitude": 31.237
-      },
-      "Content": "foo long text2",
-      "Order": 1
-    }
   ]
 }
