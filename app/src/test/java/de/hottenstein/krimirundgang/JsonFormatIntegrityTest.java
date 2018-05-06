@@ -7,7 +7,7 @@ import static junit.framework.Assert.assertTrue;
 
 public class JsonFormatIntegrityTest {
 
-       public String passingJson ="{\n" +
+       private String passingJson ="{\n" +
             "  \"Name\": \"foo\",\n" +
             "  \"Stops\": [\n" +
             "    {\n" +
@@ -35,7 +35,7 @@ public class JsonFormatIntegrityTest {
             "  ]\n" +
             "}";
 
-    public String noName ="{\n" +
+    private String noName ="{\n" +
             "  \"Name\":"+ //Error
             "  \"Stops\": [\n" +
             "    {\n" +
@@ -63,7 +63,7 @@ public class JsonFormatIntegrityTest {
             "  ]\n" +
             "}";
 
-    public String noStops ="{\n" +
+    private String noStops ="{\n" +
             "  \"Name\":"+
             "  \"Stops\": " + //Error
             "    {\n" +
@@ -71,7 +71,7 @@ public class JsonFormatIntegrityTest {
             "  ]\n" +
             "}";
 
-    public String noLongitude ="{\n" +
+    private String noLongitude ="{\n" +
             "  \"Name\": \"foo\",\n" +
             "  \"Stops\": [\n" +
             "    {\n" +
@@ -99,7 +99,7 @@ public class JsonFormatIntegrityTest {
             "  ]\n" +
             "}";
 
-    public String noLatitude ="{\n" +
+    private String noLatitude ="{\n" +
             "  \"Name\": \"foo\",\n" +
             "  \"Stops\": [\n" +
             "    {\n" +
@@ -127,7 +127,7 @@ public class JsonFormatIntegrityTest {
             "  ]\n" +
             "}";
 
-    public String noContent ="{\n" +
+    private String noContent ="{\n" +
             "  \"Name\": \"foo\",\n" +
             "  \"Stops\": [\n" +
             "    {\n" +
@@ -155,7 +155,7 @@ public class JsonFormatIntegrityTest {
             "  ]\n" +
             "}";
 
-    public String noOrder ="{\n" +
+    private String noOrder ="{\n" +
             "  \"Name\": \"foo\",\n" +
             "  \"Stops\": [\n" +
             "    {\n" +
@@ -183,7 +183,7 @@ public class JsonFormatIntegrityTest {
             "  ]\n" +
             "}";
 
-    public String noTitle ="{\n" +
+    private String noTitle ="{\n" +
             "  \"Name\": \"foo\",\n" +
             "  \"Stops\": [\n" +
             "    {\n" +
@@ -211,7 +211,7 @@ public class JsonFormatIntegrityTest {
             "  ]\n" +
             "}";
 
-    public String noDescription ="{\n" +
+    private String noDescription ="{\n" +
             "  \"Name\": \"foo\",\n" +
             "  \"Stops\": [\n" +
             "    {\n" +
@@ -239,7 +239,7 @@ public class JsonFormatIntegrityTest {
             "  ]\n" +
             "}";
 
-    public String nullDescription ="{\n" +
+    private String nullDescription ="{\n" +
             "  \"Name\": \"foo\",\n" +
             "  \"Stops\": [\n" +
             "    {\n" +
