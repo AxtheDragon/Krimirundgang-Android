@@ -39,23 +39,6 @@ public class TourDetailActivity extends AppCompatActivity {
         recyclerView.setAdapter(sa);
     }
 
-    public static List<StopInfo> createList(int size) {
-
-        List<StopInfo> result = new ArrayList<StopInfo>();
-        for (int i=1; i <= size; i++){
-            StopInfo si = new StopInfo();
-            si.title = StopInfo.TITLE_PREFIX + i;
-            si.description = StopInfo.DESCRIPTION_PREFIX + i;
-            si.location = new Location("");
-            si.location.setLatitude(52.0000);
-            si.location.setLongitude(9.0000);
-            si.content = i + StopInfo.CONTENT_DUMMY;
-
-            result.add(si);
-        }
-        return result;
-    }
-
     private TourInfo loadTour() {
         InputStream inputStream = getResources().openRawResource(R.raw.example_tour);
         BufferedReader reader;
