@@ -13,6 +13,7 @@ public class StopInfo implements Parcelable {
     protected String description;
     protected Location location;
     protected String content;
+    protected Integer order;
 
     protected static final String TITLE_PREFIX = "Title_";
     protected static final String DESCRIPTION_PREFIX = "DESCRIPTION_";
@@ -30,6 +31,7 @@ public class StopInfo implements Parcelable {
         description = in.readString();
         location = (Location) in.readValue(Location.class.getClassLoader());
         content = in.readString();
+        order = in.readInt();
     }
 
     protected StopInfo(){}
@@ -46,7 +48,7 @@ public class StopInfo implements Parcelable {
         dest.writeString(description);
         dest.writeValue(location);
         dest.writeString(content);
-
+        dest.writeInt(order);
     }
 
     @SuppressWarnings("unused")
