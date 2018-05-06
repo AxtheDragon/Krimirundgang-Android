@@ -19,6 +19,7 @@ public class StopInfoTest {
     Location location = new Location("Test location");
     String content = "Test content";
     StopInfo stopInfo;
+    Integer order;
 
     @Before
     public void initalize() {
