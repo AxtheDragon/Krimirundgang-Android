@@ -31,7 +31,8 @@ public class TourDetailActivity extends AppCompatActivity {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
 
-        TourInfo myTour = loadTour();
+        InputStream inputStream = getResources().openRawResource(R.raw.example_tour);
+        TourInfo myTour = TourLoader.loadTour(inputStream);
 
         StopAdapter sa = new StopAdapter(myTour.stopList, this);
         TextView title = (TextView) findViewById(R.id.title);
@@ -39,63 +40,5 @@ public class TourDetailActivity extends AppCompatActivity {
         recyclerView.setAdapter(sa);
     }
 
-    private TourInfo loadTour() {
-        InputStream inputStream = getResources().openRawResource(R.raw.example_tour);
-        BufferedReader reader;
-        try {
-            reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"), 8);
-            StringBuilder sb = new StringBuilder();
 
-            String line;
-            while ((line = reader.readLine()) != null)
-            {
-                sb.append(line + "\n");
-            }
-
-            String jsonString = sb.toString();
-
-            JSONObject jsonTour = new JSONObject(jsonString);
-            String name = jsonTour.getString("Name");
-            JSONArray stops = jsonTour.getJSONArray("Stops");
-            return new TourInfo(name, readStops(stops));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } finally {
-            if(inputStream != null){
-                try {
-                    inputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return null;
-    }
-
-    private List<StopInfo> readStops(JSONArray wrappedStops) {
-        List<StopInfo> stopList = new ArrayList<>();
-        JSONObject currentStop;
-        for (int i = 0; i < wrappedStops.length(); i++) {
-            try {
-                currentStop = wrappedStops.getJSONObject(i);
-                StopInfo newStop = new StopInfo();
-                newStop.title = currentStop.getString("Title");
-                newStop.description = currentStop.getString("Description");
-                JSONObject jsonLocation = currentStop.getJSONObject("Location");
-                newStop.location = new Location("JSON");
-                newStop.location.setLatitude(jsonLocation.getDouble("Latitude"));
-                newStop.location.setLongitude(jsonLocation.getDouble("Longitude"));
-                newStop.content = currentStop.getString("Content");
-                newStop.order = currentStop.getInt("Order");
-                stopList.add(newStop);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        return stopList;
-    }
 }
