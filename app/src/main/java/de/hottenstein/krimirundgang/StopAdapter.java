@@ -35,7 +35,7 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.StopViewHolder
         final StopInfo si = stopList.get(i);
         stopViewHolder.vTitle.setText(si.title);
         stopViewHolder.vDescription.setText(si.description);
-        stopViewHolder.vOrder.setText(toString(si.order));
+        stopViewHolder.vOrder.setText(si.order.toString() + ". Halt");
         stopViewHolder.vCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
