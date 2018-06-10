@@ -1,19 +1,25 @@
 package de.hottenstein.krimirundgang;
 
-import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
-import android.location.Location;
-import android.view.View;
 
 public class TourDetailActivity extends AppCompatActivity {
-
-    private String sLocationName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,24 +31,14 @@ public class TourDetailActivity extends AppCompatActivity {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
 
-        StopAdapter sa = new StopAdapter(createList(10), this);
+        InputStream inputStream = getResources().openRawResource(R.raw.example_tour);
+        TourInfo myTour = TourLoader.loadTour(inputStream);
+
+        StopAdapter sa = new StopAdapter(myTour.stopList, this);
+        TextView title = (TextView) findViewById(R.id.title);
+        title.setText(myTour.title);
         recyclerView.setAdapter(sa);
     }
 
-    private List<StopInfo> createList(int size) {
 
-        List<StopInfo> result = new ArrayList<StopInfo>();
-        for (int i=1; i <= size; i++){
-            StopInfo si = new StopInfo();
-            si.title = StopInfo.TITLE_PREFIX + i;
-            si.description = StopInfo.DESCRIPTION_PREFIX + i;
-            si.location = new Location(sLocationName);
-            si.location.setLatitude(52.0000);
-            si.location.setLongitude(9.0000);
-            si.content = i + StopInfo.CONTENT_DUMMY;
-
-            result.add(si);
-        }
-        return result;
-    }
 }
