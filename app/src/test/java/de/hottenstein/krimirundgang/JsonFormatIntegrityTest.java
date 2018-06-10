@@ -1,5 +1,7 @@
 package de.hottenstein.krimirundgang;
 
+//this test does not work because of a unknown problem with robolectric
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
