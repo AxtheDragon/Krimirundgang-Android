@@ -78,6 +78,7 @@ public class TourMapActivity extends FragmentActivity implements OnMapReadyCallb
             builder.include(stop);
         }
         mMap.setOnInfoWindowClickListener(this);
+        mMap.setMyLocationEnabled(true);
         mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), 50));
     }
 
