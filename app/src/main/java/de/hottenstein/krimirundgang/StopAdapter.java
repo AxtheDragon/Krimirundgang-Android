@@ -6,6 +6,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewDebug;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -34,6 +35,7 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.StopViewHolder
         final StopInfo si = stopList.get(i);
         stopViewHolder.vTitle.setText(si.title);
         stopViewHolder.vDescription.setText(si.description);
+        stopViewHolder.vOrder.setText(toString(si.order));
         stopViewHolder.vCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,12 +59,14 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.StopViewHolder
         protected TextView vTitle;
         protected TextView vDescription;
         protected CardView vCard;
+        protected TextView vOrder;
 
         public StopViewHolder(View v){
             super(v);
             vTitle = (TextView) v.findViewById(R.id.stopTitle);
             vDescription = (TextView) v.findViewById(R.id.stopDescription);
             vCard = (CardView) v.findViewById(R.id.stopView);
+            vOrder = (TextView) v.findViewById(R.id.stopOrder);
         }
     }
 }
