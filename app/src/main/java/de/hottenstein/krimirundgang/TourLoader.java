@@ -15,8 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TourLoader {
-    public static TourInfo loadTour() {
-        InputStream inputStream = getResources().openRawResource(R.raw.example_tour);
+    public static TourInfo loadTour(InputStream inputStream) {
         BufferedReader reader;
         try {
             reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"), 8);

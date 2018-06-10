@@ -31,7 +31,8 @@ public class TourDetailActivity extends AppCompatActivity {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
 
-        TourInfo myTour = TourLoader.loadTour();
+        InputStream inputStream = getResources().openRawResource(R.raw.example_tour);
+        TourInfo myTour = TourLoader.loadTour(inputStream);
 
         StopAdapter sa = new StopAdapter(myTour.stopList, this);
         TextView title = (TextView) findViewById(R.id.title);
