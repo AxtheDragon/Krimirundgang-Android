@@ -14,6 +14,7 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -28,7 +29,11 @@ public class TourMapActivity extends FragmentActivity implements OnMapReadyCallb
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tour_map);
-        stopList = createList(10);
+
+        InputStream inputStream = getResources().openRawResource(R.raw.example_tour);
+        TourInfo myTour = TourLoader.loadTour(inputStream);
+
+        stopList = myTour.stopList;
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -36,30 +41,7 @@ public class TourMapActivity extends FragmentActivity implements OnMapReadyCallb
         mapFragment.getMapAsync(this);
     }
 
-    private List<StopInfo> createList(int size) {
-        float randMin = -10;
-        float randMax = +10;
-        Random rand = new Random();
-
-        List<StopInfo> result = new ArrayList<StopInfo>();
-        for (int i = 1; i <= size; i++) {
-            float latOffset = rand.nextFloat() * (randMin - randMax) + randMin;
-            float lngOffset = rand.nextFloat() * (randMin - randMax) + randMin;
-            StopInfo si = new StopInfo();
-            si.title = StopInfo.TITLE_PREFIX + i;
-            si.description = StopInfo.DESCRIPTION_PREFIX + i;
-            si.location = new Location(sLocationName);
-            si.location.setLatitude(52.0000 + latOffset);
-            si.location.setLongitude(9.0000 + lngOffset);
-            si.content = i + StopInfo.CONTENT_DUMMY;
-
-            result.add(si);
-        }
-        return result;
-    }
-
-
-    /**
+   /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
      * If Google Play services is not installed on the device, the user will be prompted to install
