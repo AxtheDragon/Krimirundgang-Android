@@ -9,10 +9,13 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.maps.android.ui.IconGenerator;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -53,6 +56,7 @@ public class TourMapActivity extends FragmentActivity implements OnMapReadyCallb
         mMap = googleMap;
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
         StopInfo currentStop;
+        String order;
 
         // Add a marker at the location of the first stop
         for (int i = 0; i < stopList.size(); i++) {
@@ -60,10 +64,15 @@ public class TourMapActivity extends FragmentActivity implements OnMapReadyCallb
             double lat = currentStop.location.getLatitude();
             double lng = currentStop.location.getLongitude();
             LatLng stop = new LatLng(lat, lng);
+            IconGenerator iconFactory = new IconGenerator(this);
+            order = currentStop.order.toString();
+            BitmapDescriptor bitmapDescriptor =
+                    BitmapDescriptorFactory.fromBitmap(iconFactory.makeIcon(order));
             Marker marker =  mMap.addMarker(new MarkerOptions()
                     .position(stop)
                     .title(currentStop.title)
                     .snippet(currentStop.description)
+                    .icon(bitmapDescriptor)
             );
             marker.setTag(currentStop);
             builder.include(stop);
